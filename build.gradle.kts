@@ -5,6 +5,7 @@ plugins {
     id("org.springframework.boot") version "4.0.2"
     id("io.spring.dependency-management") version "1.1.7"
     kotlin("plugin.jpa") version "2.2.21"
+    id("org.jetbrains.kotlinx.kover") version "0.9.1"
 }
 
 group = "io.github.snorrefo"
@@ -81,4 +82,20 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+kover {
+    reports {
+        filters {
+            excludes {
+                classes(
+                    "*JpaEntity*",
+                    "*JpaRepository*",
+                    "*Configuration*",
+                    "*Properties*",
+                    "*.EventDrivenSocialApplication*"
+                )
+            }
+        }
+    }
 }
