@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/social_dev
+    username: postgres
+    password: postgres
+
+logging:
+  level:
+    root: INFO
+    io.github.snorrefo.event_driven_social: DEBUG
