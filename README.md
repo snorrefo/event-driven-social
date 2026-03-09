@@ -1,3 +1,76 @@
+Here's what was done:
+
+Phase 1 — Modular monolith restructuring is finished:
+
+- shared/ — Event contracts (DomainEvent, PostCreatedEvent, PostLikedEvent, UserFollowedEvent, UserUnfollowedEvent),
+  OutboxEntry model, ports (DomainEventPublisher, OutboxRepository, EventPublisher,
+  EventSerializer), and all infrastructure (outbox, messaging, config, event bus, exception handler)
+- post/ — Domain model, inbound/outbound ports, PostApplicationService (now publishes in-process events via
+  DomainEventPublisher alongside outbox writes), controller, DTOs, JPA persistence layer
+- identity/ — Domain model, ports, UserApplicationService, controller, DTOs, JPA persistence layer
+- All old domain/, adapter/, application/ directories deleted
+- All tests migrated to new package locations and pass
+
+The codebase is now a proper modular monolith. Each module only exposes inbound port interfaces — no module reaches into
+another's adapters or domain models. The DomainEventPublisher is wired and ready for
+event consumers in Phases 2-5 (social graph, likes, timeline, notifications).
+
+------------------
+
+4. Build One Real Project That Demonstrates Modern Patterns
+
+Your Twitter clone idea is good, but make it strategically showcase what you're missing. I'd suggest something like:
+
+Event-Driven Microservices Project (4-6 weeks of focused work):
+
+2-3 small services (User Service, Tweet Service, Timeline Service)
+Event-driven communication via SQS/SNS or Kafka
+Hexagonal/Clean Architecture in each service
+Containerized with Docker, deployed to ECS/Fargate
+IaC with Terraform or CDK
+Simple CI/CD pipeline in GitHub Actions or GitLab
+
+This single project addresses: cloud deployment, modern architecture patterns, event-driven design, and container
+orchestration. Make the GitHub repo pristine - treat it like your portfolio piece.
+
+3. Get Comfortable with AI Coding Tools Now
+
+Use GitHub Copilot or Cursor daily on your project
+Learn to prompt effectively - describe intent, ask for refactoring suggestions, request tests
+Practice the workflow of: rough implementation → AI refinement → your review
+This will come up in interviews ("how do you use AI tools?")
+
+Architecture Patterns Deep Dive
+Since you mentioned lacking system design experience, study these specific patterns:
+
+Hexagonal Architecture/Clean Architecture - Uncle Bob's Clean Architecture book or watch talks by him
+Event Sourcing & CQRS (you have Akka experience, this should click fast)
+Saga Pattern for distributed transactions
+API Gateway patterns
+Circuit breakers, retries, bulkheads (you may know this from Akka, but learn the cloud-native implementations)
+
+Resource: Martin Fowler's blog, "Designing Data-Intensive Applications" by Kleppmann (chapters on distributed systems,
+which you'll breeze through given your Akka background)
+What NOT to Over-Invest In
+
+Don't spend months on certifications - one AWS cert maximum, then prioritize hands-on
+Don't build 10 toy projects - build one really good one
+Don't learn every cloud service - focus on the core backend services listed above
+Don't switch from Scala to Java just to learn Java - your Scala/FP background is actually valuable. Use Java for the
+project if you want, but Scala + cloud skills is a strong combo
+
+Leverage Your Strengths
+When interviewing, frame your experience positively:
+
+"Designed and implemented driver-level integration requiring deep understanding of concurrency and failure handling in
+distributed systems"
+"Led modernization of deployment pipeline, introducing containerization and IaC"
+"Extensive experience with Akka's actor model and supervision strategies" (this translates to understanding of
+resilience patterns)
+
+Your thermodynamics PhD suggests strong analytical skills - that's an asset. Your initiative on CI/CD modernization
+shows you don't just maintain legacy systems.
+
 Event-Driven Social Platform - Complete Project Structure
 Technology Stack
 

@@ -33,6 +33,11 @@ aws:
   sqs:
     timeline-events: ${TIMELINE_EVENTS_QUEUE_URL:}
     notification-events: ${NOTIFICATION_EVENTS_QUEUE_URL:}
+    user-count-events: ${USER_COUNT_EVENTS_QUEUE_URL:}
+
+sqs:
+  polling:
+    enabled: ${SQS_POLLING_ENABLED:false}
 
 logging:
   level:
