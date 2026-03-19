@@ -10,17 +10,17 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
+  region = var.aws_region
 }
 
-variable "region" {
+variable "aws_region" {
   description = "AWS region"
   type        = string
   default     = "eu-north-1"
 }
 
 variable "environment" {
-  description = "Environment name (e.g. dev, staging, prod)"
+  description = "Environment name"
   type        = string
   default     = "dev"
 }

@@ -37,3 +37,7 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+### Local environment ###
+.env
+.DS_Store

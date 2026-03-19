@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/userdb
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  quartz:
+    job-store-type: memory
+server:
+  port: 8081
+
+app:
+  aws:
+    region: eu-north-1
+  sns:
+    users-followed-topic-arn: ${USERS_FOLLOWED_TOPIC_ARN:arn:aws:sns:eu-north-1:000000000000:users-followed}

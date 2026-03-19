@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: post-service
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postdb
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  quartz:
+    job-store-type: memory
+server:
+  port: 8082
+
+app:
+  aws:
+    region: eu-north-1
+  sns:
+    posts-created-topic-arn: ${POSTS_CREATED_TOPIC_ARN:arn:aws:sns:eu-north-1:000000000000:posts-created}
